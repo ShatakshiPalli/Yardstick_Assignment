@@ -6,8 +6,4 @@
   "routes": [
     { "src": "/(.*)", "dest": "/index.js" }
   ],
-  "env": {
-    "MONGO_URI": "<your-mongodb-connection-string>",
-    "JWT_SECRET": "<your-jwt-secret>"
-  }
 }
