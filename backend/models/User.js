@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   role: { type: String, enum: ['admin', 'member'], required: true },
   tenantId: { type: mongoose.Schema.Types.ObjectId, ref: 'Tenant', required: true },
+  status: { type: String, enum: ['pending', 'accepted'], default: 'pending' },
 });
 
 const User = mongoose.model('User', userSchema);

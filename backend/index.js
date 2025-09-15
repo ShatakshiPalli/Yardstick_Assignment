@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import authRoutes from './routes/auth.js';
 import notesRoutes from './routes/notes.js';
 import tenantsRoutes from './routes/tenants.js';
+import inviteRoutes from './routes/invite.js';
 
 dotenv.config();
 const app = express();
@@ -21,6 +22,7 @@ app.get('/health', (req, res) => {
 app.use('/auth', authRoutes);
 app.use('/notes', notesRoutes);
 app.use('/tenants', tenantsRoutes);
+app.use('/invite', inviteRoutes);
 
 const PORT = process.env.PORT || 4000;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/saas-notes';
