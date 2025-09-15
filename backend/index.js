@@ -10,7 +10,12 @@ import inviteRoutes from './routes/invite.js';
 
 dotenv.config();
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://yardstick-assignment-teal.vercel.app",
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+}));
 app.use(express.json());
 
 // Health endpoint
@@ -25,9 +30,9 @@ app.use('/tenants', tenantsRoutes);
 app.use('/invite', inviteRoutes);
 
 const PORT = process.env.PORT || 4000;
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/saas-notes';
+const MONGO_URI = process.env.MONGO_URI ;
 
-mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(MONGO_URI)
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     console.log("Connected to MongoDB");
